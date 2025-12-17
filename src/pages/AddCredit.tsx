@@ -5,7 +5,7 @@ import { AddCreditForm } from "@/components/AddCreditForm";
 export default function AddCredit() {
   return (
     <div className="min-h-screen bg-background">
-      <Header userName="Ramesh" role="staff" />
+      <Header />
       <AddCreditForm />
       <Navigation />
     </div>

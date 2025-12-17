@@ -7,93 +7,64 @@
 @tailwind components;
 @tailwind utilities;
 
-/* BunkCredit Neubrutalism Design System */
+/* BunkCredit Enterprise Design System - Dark Professional Theme */
 
 @layer base {
   :root {
-    /* Core colors - High contrast for sunlight visibility */
-    --background: 60 9% 98%;
-    --foreground: 0 0% 0%;
+    /* Enterprise dark theme - Navy/Charcoal base with Gold accents */
+    --background: 220 20% 10%;
+    --foreground: 210 20% 95%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 0 0% 0%;
+    --card: 220 18% 14%;
+    --card-foreground: 210 20% 95%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 0%;
+    --popover: 220 18% 14%;
+    --popover-foreground: 210 20% 95%;
 
-    /* Safety Yellow - Primary brand color */
-    --primary: 48 96% 53%;
-    --primary-foreground: 0 0% 0%;
+    /* Gold/Amber primary - Enterprise premium feel */
+    --primary: 43 96% 56%;
+    --primary-foreground: 220 20% 10%;
 
-    /* Light gray for secondary elements */
-    --secondary: 60 5% 90%;
-    --secondary-foreground: 0 0% 0%;
+    /* Dark slate for secondary */
+    --secondary: 220 15% 20%;
+    --secondary-foreground: 210 20% 90%;
 
-    --muted: 60 5% 85%;
-    --muted-foreground: 0 0% 30%;
+    --muted: 220 15% 18%;
+    --muted-foreground: 220 10% 55%;
 
-    /* Teal accent for interactive states */
-    --accent: 174 84% 43%;
-    --accent-foreground: 0 0% 100%;
+    /* Teal accent */
+    --accent: 174 60% 45%;
+    --accent-foreground: 220 20% 10%;
 
-    /* Error red */
-    --destructive: 0 84% 60%;
+    /* States */
+    --destructive: 0 72% 51%;
     --destructive-foreground: 0 0% 100%;
 
-    /* Success green */
-    --success: 142 76% 36%;
+    --success: 152 69% 40%;
     --success-foreground: 0 0% 100%;
 
-    /* Warning orange */
     --warning: 38 92% 50%;
-    --warning-foreground: 0 0% 0%;
+    --warning-foreground: 220 20% 10%;
 
-    /* Borders - thick and bold */
-    --border: 0 0% 0%;
-    --input: 0 0% 0%;
-    --ring: 48 96% 53%;
+    /* Borders - subtle gold tint */
+    --border: 43 30% 35%;
+    --input: 220 15% 25%;
+    --ring: 43 96% 56%;
 
     --radius: 0px;
 
-    /* Neubrutalism shadows */
+    /* Neubrutalism shadows with gold */
     --shadow-offset: 4px;
-    --shadow-color: 0 0% 0%;
+    --shadow-color: 43 60% 30%;
   }
 
   .dark {
-    --background: 0 0% 5%;
-    --foreground: 0 0% 100%;
+    /* Already dark, maintain consistency */
+    --background: 220 25% 8%;
+    --foreground: 210 20% 95%;
 
-    --card: 0 0% 10%;
-    --card-foreground: 0 0% 100%;
-
-    --popover: 0 0% 10%;
-    --popover-foreground: 0 0% 100%;
-
-    --primary: 48 96% 53%;
-    --primary-foreground: 0 0% 0%;
-
-    --secondary: 0 0% 20%;
-    --secondary-foreground: 0 0% 100%;
-
-    --muted: 0 0% 25%;
-    --muted-foreground: 0 0% 70%;
-
-    --accent: 174 84% 43%;
-    --accent-foreground: 0 0% 100%;
-
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 100%;
-
-    --success: 142 76% 36%;
-    --success-foreground: 0 0% 100%;
-
-    --warning: 38 92% 50%;
-    --warning-foreground: 0 0% 0%;
-
-    --border: 0 0% 100%;
-    --input: 0 0% 100%;
-    --ring: 48 96% 53%;
+    --card: 220 20% 12%;
+    --card-foreground: 210 20% 95%;
   }
 }
 
@@ -103,147 +74,155 @@
   }
 
   body {
-    @apply bg-background text-foreground font-sans;
+    @apply bg-background text-foreground font-sans antialiased;
     font-family: 'Space Grotesk', system-ui, sans-serif;
   }
 
-  /* Monospace for numbers */
   .font-mono {
     font-family: 'JetBrains Mono', monospace;
   }
 }
 
 @layer components {
-  /* Neubrutalism card style */
+  /* Enterprise Neubrutalism card style */
   .neo-card {
-    @apply bg-card border-[3px] border-foreground;
-    box-shadow: var(--shadow-offset) var(--shadow-offset) 0 hsl(var(--foreground));
+    @apply bg-card border-[3px] border-primary/40;
+    box-shadow: 4px 4px 0 hsl(var(--primary) / 0.3);
   }
 
   .neo-card-hover {
-    @apply neo-card transition-all duration-150;
+    @apply neo-card transition-all duration-150 cursor-pointer;
   }
 
   .neo-card-hover:hover {
-    box-shadow: 6px 6px 0 hsl(var(--foreground));
+    @apply border-primary;
+    box-shadow: 6px 6px 0 hsl(var(--primary) / 0.4);
     transform: translate(-2px, -2px);
   }
 
   .neo-card-hover:active {
-    box-shadow: 2px 2px 0 hsl(var(--foreground));
+    box-shadow: 2px 2px 0 hsl(var(--primary) / 0.3);
     transform: translate(2px, 2px);
   }
 
-  /* Input fields with neubrutalism */
+  /* Enterprise input fields */
   .neo-input {
-    @apply w-full px-4 py-3 bg-background border-[3px] border-foreground text-foreground placeholder:text-muted-foreground font-medium text-lg;
-    box-shadow: 3px 3px 0 hsl(var(--foreground));
+    @apply w-full px-4 py-3 bg-input border-[3px] border-primary/40 text-foreground placeholder:text-muted-foreground font-medium text-lg transition-all;
+    box-shadow: 3px 3px 0 hsl(var(--primary) / 0.2);
   }
 
   .neo-input:focus {
-    @apply outline-none ring-0;
-    box-shadow: 5px 5px 0 hsl(var(--foreground));
+    @apply outline-none border-primary;
+    box-shadow: 5px 5px 0 hsl(var(--primary) / 0.3);
     transform: translate(-2px, -2px);
   }
 
-  /* Button base styles */
+  /* Enterprise button base */
   .neo-button {
-    @apply inline-flex items-center justify-center gap-2 px-6 py-3 font-bold text-lg border-[3px] border-foreground transition-all duration-150;
-    box-shadow: 4px 4px 0 hsl(var(--foreground));
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 font-bold text-lg border-[3px] transition-all duration-150;
+    box-shadow: 4px 4px 0 hsl(var(--primary) / 0.3);
   }
 
   .neo-button:hover {
-    box-shadow: 6px 6px 0 hsl(var(--foreground));
+    box-shadow: 6px 6px 0 hsl(var(--primary) / 0.4);
     transform: translate(-2px, -2px);
   }
 
   .neo-button:active {
-    box-shadow: 1px 1px 0 hsl(var(--foreground));
+    box-shadow: 1px 1px 0 hsl(var(--primary) / 0.2);
     transform: translate(3px, 3px);
   }
 
   .neo-button:disabled {
     @apply opacity-50 cursor-not-allowed;
-    box-shadow: 4px 4px 0 hsl(var(--foreground));
+    box-shadow: 4px 4px 0 hsl(var(--primary) / 0.2);
     transform: none;
   }
 
   /* Button variants */
   .neo-button-primary {
-    @apply neo-button bg-primary text-primary-foreground;
+    @apply neo-button bg-primary text-primary-foreground border-primary;
   }
 
   .neo-button-secondary {
-    @apply neo-button bg-secondary text-secondary-foreground;
+    @apply neo-button bg-secondary text-secondary-foreground border-primary/40;
   }
 
   .neo-button-success {
-    @apply neo-button bg-success text-success-foreground;
+    @apply neo-button bg-success text-success-foreground border-success;
   }
 
   .neo-button-destructive {
-    @apply neo-button bg-destructive text-destructive-foreground;
+    @apply neo-button bg-destructive text-destructive-foreground border-destructive;
   }
 
   .neo-button-warning {
-    @apply neo-button bg-warning text-warning-foreground;
+    @apply neo-button bg-warning text-warning-foreground border-warning;
   }
 
   .neo-button-ghost {
-    @apply neo-button bg-transparent shadow-none;
+    @apply neo-button bg-transparent border-primary/40 text-foreground;
     box-shadow: none;
   }
 
   .neo-button-ghost:hover {
-    @apply bg-secondary;
-    box-shadow: 4px 4px 0 hsl(var(--foreground));
+    @apply bg-secondary border-primary;
+    box-shadow: 4px 4px 0 hsl(var(--primary) / 0.3);
   }
 
-  /* Select dropdown */
+  /* Enterprise select */
   .neo-select {
-    @apply w-full px-4 py-3 bg-background border-[3px] border-foreground text-foreground font-medium text-lg appearance-none cursor-pointer;
-    box-shadow: 3px 3px 0 hsl(var(--foreground));
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+    @apply w-full px-4 py-3 bg-input border-[3px] border-primary/40 text-foreground font-medium text-lg appearance-none cursor-pointer transition-all;
+    box-shadow: 3px 3px 0 hsl(var(--primary) / 0.2);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23F59E0B' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-position: right 12px center;
     background-size: 20px;
   }
 
   .neo-select:focus {
-    @apply outline-none;
-    box-shadow: 5px 5px 0 hsl(var(--foreground));
+    @apply outline-none border-primary;
+    box-shadow: 5px 5px 0 hsl(var(--primary) / 0.3);
   }
 
-  /* Badge styles */
+  /* Enterprise badge */
   .neo-badge {
-    @apply inline-flex items-center px-3 py-1 font-bold text-sm border-[2px] border-foreground uppercase tracking-wide;
-    box-shadow: 2px 2px 0 hsl(var(--foreground));
+    @apply inline-flex items-center px-3 py-1 font-bold text-xs border-[2px] uppercase tracking-wider;
+    box-shadow: 2px 2px 0 hsl(var(--primary) / 0.2);
   }
 
   .neo-badge-primary {
-    @apply neo-badge bg-primary text-primary-foreground;
+    @apply neo-badge bg-primary text-primary-foreground border-primary;
   }
 
   .neo-badge-success {
-    @apply neo-badge bg-success text-success-foreground;
+    @apply neo-badge bg-success text-success-foreground border-success;
   }
 
   .neo-badge-warning {
-    @apply neo-badge bg-warning text-warning-foreground;
+    @apply neo-badge bg-warning text-warning-foreground border-warning;
   }
 
   .neo-badge-destructive {
-    @apply neo-badge bg-destructive text-destructive-foreground;
+    @apply neo-badge bg-destructive text-destructive-foreground border-destructive;
   }
 
-  /* Success banner animation */
+  .neo-badge-admin {
+    @apply neo-badge bg-gradient-to-r from-primary to-amber-400 text-primary-foreground border-primary;
+  }
+
+  .neo-badge-staff {
+    @apply neo-badge bg-secondary text-secondary-foreground border-primary/40;
+  }
+
+  /* Success banner */
   @keyframes success-flash {
     0%, 100% {
       opacity: 1;
       transform: scale(1);
     }
     50% {
-      opacity: 0.8;
+      opacity: 0.9;
       transform: scale(1.02);
     }
   }
@@ -252,7 +231,7 @@
     animation: success-flash 0.3s ease-in-out 3;
   }
 
-  /* Slide in animation */
+  /* Animations */
   @keyframes slide-in-up {
     from {
       opacity: 0;
@@ -268,18 +247,39 @@
     animation: slide-in-up 0.3s ease-out;
   }
 
-  /* Pulse glow for warnings */
   @keyframes pulse-glow {
     0%, 100% {
-      box-shadow: 4px 4px 0 hsl(var(--foreground));
+      box-shadow: 4px 4px 0 hsl(var(--primary) / 0.3);
     }
     50% {
-      box-shadow: 4px 4px 0 hsl(var(--foreground)), 0 0 20px hsl(var(--warning) / 0.5);
+      box-shadow: 4px 4px 0 hsl(var(--primary) / 0.3), 0 0 20px hsl(var(--warning) / 0.5);
     }
   }
 
   .warning-pulse {
     animation: pulse-glow 1.5s ease-in-out infinite;
+  }
+
+  /* Gold gradient text */
+  .text-gold-gradient {
+    @apply bg-gradient-to-r from-primary via-amber-400 to-primary bg-clip-text text-transparent;
+  }
+
+  /* Enterprise table styles */
+  .neo-table {
+    @apply w-full border-collapse;
+  }
+
+  .neo-table th {
+    @apply px-4 py-3 text-left font-bold uppercase tracking-wider text-sm bg-secondary border-b-[3px] border-primary/40;
+  }
+
+  .neo-table td {
+    @apply px-4 py-3 border-b border-primary/20;
+  }
+
+  .neo-table tr:hover td {
+    @apply bg-secondary/50;
   }
 }
 
