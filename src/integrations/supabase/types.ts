@@ -14,16 +14,229 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      customers: {
+        Row: {
+          address: string | null
+          created_at: string
+          created_by: string | null
+          credit_limit: number
+          id: string
+          name: string
+          phone: string | null
+          updated_at: string
+        }
+        Insert: {
+          address?: string | null
+          created_at?: string
+          created_by?: string | null
+          credit_limit?: number
+          id?: string
+          name: string
+          phone?: string | null
+          updated_at?: string
+        }
+        Update: {
+          address?: string | null
+          created_at?: string
+          created_by?: string | null
+          credit_limit?: number
+          id?: string
+          name?: string
+          phone?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      payments: {
+        Row: {
+          amount: number
+          created_at: string
+          created_by: string
+          customer_id: string
+          id: string
+          notes: string | null
+          payment_method: string | null
+          reference_number: string | null
+          staff_name: string | null
+        }
+        Insert: {
+          amount: number
+          created_at?: string
+          created_by: string
+          customer_id: string
+          id?: string
+          notes?: string | null
+          payment_method?: string | null
+          reference_number?: string | null
+          staff_name?: string | null
+        }
+        Update: {
+          amount?: number
+          created_at?: string
+          created_by?: string
+          customer_id?: string
+          id?: string
+          notes?: string | null
+          payment_method?: string | null
+          reference_number?: string | null
+          staff_name?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "payments_customer_id_fkey"
+            columns: ["customer_id"]
+            isOneToOne: false
+            referencedRelation: "customers"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      profiles: {
+        Row: {
+          created_at: string
+          full_name: string
+          id: string
+          phone: string | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          full_name: string
+          id?: string
+          phone?: string | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          full_name?: string
+          id?: string
+          phone?: string | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      transactions: {
+        Row: {
+          amount: number
+          created_at: string
+          created_by: string
+          customer_id: string
+          driver_photo_url: string | null
+          fuel_type: string
+          id: string
+          notes: string | null
+          staff_name: string | null
+          vehicle_number: string
+        }
+        Insert: {
+          amount: number
+          created_at?: string
+          created_by: string
+          customer_id: string
+          driver_photo_url?: string | null
+          fuel_type: string
+          id?: string
+          notes?: string | null
+          staff_name?: string | null
+          vehicle_number: string
+        }
+        Update: {
+          amount?: number
+          created_at?: string
+          created_by?: string
+          customer_id?: string
+          driver_photo_url?: string | null
+          fuel_type?: string
+          id?: string
+          notes?: string | null
+          staff_name?: string | null
+          vehicle_number?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "transactions_customer_id_fkey"
+            columns: ["customer_id"]
+            isOneToOne: false
+            referencedRelation: "customers"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      user_roles: {
+        Row: {
+          created_at: string
+          id: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id?: string
+        }
+        Relationships: []
+      }
+      vehicle_numbers: {
+        Row: {
+          created_at: string
+          customer_id: string
+          id: string
+          vehicle_number: string
+          vehicle_type: string | null
+        }
+        Insert: {
+          created_at?: string
+          customer_id: string
+          id?: string
+          vehicle_number: string
+          vehicle_type?: string | null
+        }
+        Update: {
+          created_at?: string
+          customer_id?: string
+          id?: string
+          vehicle_number?: string
+          vehicle_type?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "vehicle_numbers_customer_id_fkey"
+            columns: ["customer_id"]
+            isOneToOne: false
+            referencedRelation: "customers"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      get_user_role: {
+        Args: { _user_id: string }
+        Returns: Database["public"]["Enums"]["app_role"]
+      }
+      has_role: {
+        Args: {
+          _role: Database["public"]["Enums"]["app_role"]
+          _user_id: string
+        }
+        Returns: boolean
+      }
     }
     Enums: {
-      [_ in never]: never
+      app_role: "admin" | "staff"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +363,8 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      app_role: ["admin", "staff"],
+    },
   },
 } as const
