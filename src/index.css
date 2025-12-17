@@ -1,96 +1,99 @@
+@import '@fontsource/jetbrains-mono/400.css';
+@import '@fontsource/jetbrains-mono/700.css';
+@import '@fontsource/space-grotesk/400.css';
+@import '@fontsource/space-grotesk/700.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* BunkCredit Neubrutalism Design System */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Core colors - High contrast for sunlight visibility */
+    --background: 60 9% 98%;
+    --foreground: 0 0% 0%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 0 0% 0%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 0 0% 0%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Safety Yellow - Primary brand color */
+    --primary: 48 96% 53%;
+    --primary-foreground: 0 0% 0%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Light gray for secondary elements */
+    --secondary: 60 5% 90%;
+    --secondary-foreground: 0 0% 0%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 60 5% 85%;
+    --muted-foreground: 0 0% 30%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Teal accent for interactive states */
+    --accent: 174 84% 43%;
+    --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    /* Error red */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    /* Success green */
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 100%;
 
-    --radius: 0.5rem;
+    /* Warning orange */
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 0%;
 
-    --sidebar-background: 0 0% 98%;
+    /* Borders - thick and bold */
+    --border: 0 0% 0%;
+    --input: 0 0% 0%;
+    --ring: 48 96% 53%;
 
-    --sidebar-foreground: 240 5.3% 26.1%;
+    --radius: 0px;
 
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* Neubrutalism shadows */
+    --shadow-offset: 4px;
+    --shadow-color: 0 0% 0%;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    --background: 0 0% 5%;
+    --foreground: 0 0% 100%;
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    --card: 0 0% 10%;
+    --card-foreground: 0 0% 100%;
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 0 0% 10%;
+    --popover-foreground: 0 0% 100%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: 48 96% 53%;
+    --primary-foreground: 0 0% 0%;
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 0 0% 20%;
+    --secondary-foreground: 0 0% 100%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 0 0% 25%;
+    --muted-foreground: 0 0% 70%;
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 174 84% 43%;
+    --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 100%;
+
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 0%;
+
+    --border: 0 0% 100%;
+    --input: 0 0% 100%;
+    --ring: 48 96% 53%;
   }
 }
 
@@ -100,6 +103,188 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans;
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+  }
+
+  /* Monospace for numbers */
+  .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+@layer components {
+  /* Neubrutalism card style */
+  .neo-card {
+    @apply bg-card border-[3px] border-foreground;
+    box-shadow: var(--shadow-offset) var(--shadow-offset) 0 hsl(var(--foreground));
+  }
+
+  .neo-card-hover {
+    @apply neo-card transition-all duration-150;
+  }
+
+  .neo-card-hover:hover {
+    box-shadow: 6px 6px 0 hsl(var(--foreground));
+    transform: translate(-2px, -2px);
+  }
+
+  .neo-card-hover:active {
+    box-shadow: 2px 2px 0 hsl(var(--foreground));
+    transform: translate(2px, 2px);
+  }
+
+  /* Input fields with neubrutalism */
+  .neo-input {
+    @apply w-full px-4 py-3 bg-background border-[3px] border-foreground text-foreground placeholder:text-muted-foreground font-medium text-lg;
+    box-shadow: 3px 3px 0 hsl(var(--foreground));
+  }
+
+  .neo-input:focus {
+    @apply outline-none ring-0;
+    box-shadow: 5px 5px 0 hsl(var(--foreground));
+    transform: translate(-2px, -2px);
+  }
+
+  /* Button base styles */
+  .neo-button {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 font-bold text-lg border-[3px] border-foreground transition-all duration-150;
+    box-shadow: 4px 4px 0 hsl(var(--foreground));
+  }
+
+  .neo-button:hover {
+    box-shadow: 6px 6px 0 hsl(var(--foreground));
+    transform: translate(-2px, -2px);
+  }
+
+  .neo-button:active {
+    box-shadow: 1px 1px 0 hsl(var(--foreground));
+    transform: translate(3px, 3px);
+  }
+
+  .neo-button:disabled {
+    @apply opacity-50 cursor-not-allowed;
+    box-shadow: 4px 4px 0 hsl(var(--foreground));
+    transform: none;
+  }
+
+  /* Button variants */
+  .neo-button-primary {
+    @apply neo-button bg-primary text-primary-foreground;
+  }
+
+  .neo-button-secondary {
+    @apply neo-button bg-secondary text-secondary-foreground;
+  }
+
+  .neo-button-success {
+    @apply neo-button bg-success text-success-foreground;
+  }
+
+  .neo-button-destructive {
+    @apply neo-button bg-destructive text-destructive-foreground;
+  }
+
+  .neo-button-warning {
+    @apply neo-button bg-warning text-warning-foreground;
+  }
+
+  .neo-button-ghost {
+    @apply neo-button bg-transparent shadow-none;
+    box-shadow: none;
+  }
+
+  .neo-button-ghost:hover {
+    @apply bg-secondary;
+    box-shadow: 4px 4px 0 hsl(var(--foreground));
+  }
+
+  /* Select dropdown */
+  .neo-select {
+    @apply w-full px-4 py-3 bg-background border-[3px] border-foreground text-foreground font-medium text-lg appearance-none cursor-pointer;
+    box-shadow: 3px 3px 0 hsl(var(--foreground));
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 20px;
+  }
+
+  .neo-select:focus {
+    @apply outline-none;
+    box-shadow: 5px 5px 0 hsl(var(--foreground));
+  }
+
+  /* Badge styles */
+  .neo-badge {
+    @apply inline-flex items-center px-3 py-1 font-bold text-sm border-[2px] border-foreground uppercase tracking-wide;
+    box-shadow: 2px 2px 0 hsl(var(--foreground));
+  }
+
+  .neo-badge-primary {
+    @apply neo-badge bg-primary text-primary-foreground;
+  }
+
+  .neo-badge-success {
+    @apply neo-badge bg-success text-success-foreground;
+  }
+
+  .neo-badge-warning {
+    @apply neo-badge bg-warning text-warning-foreground;
+  }
+
+  .neo-badge-destructive {
+    @apply neo-badge bg-destructive text-destructive-foreground;
+  }
+
+  /* Success banner animation */
+  @keyframes success-flash {
+    0%, 100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.8;
+      transform: scale(1.02);
+    }
+  }
+
+  .success-banner {
+    animation: success-flash 0.3s ease-in-out 3;
+  }
+
+  /* Slide in animation */
+  @keyframes slide-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-slide-in {
+    animation: slide-in-up 0.3s ease-out;
+  }
+
+  /* Pulse glow for warnings */
+  @keyframes pulse-glow {
+    0%, 100% {
+      box-shadow: 4px 4px 0 hsl(var(--foreground));
+    }
+    50% {
+      box-shadow: 4px 4px 0 hsl(var(--foreground)), 0 0 20px hsl(var(--warning) / 0.5);
+    }
+  }
+
+  .warning-pulse {
+    animation: pulse-glow 1.5s ease-in-out infinite;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
   }
 }
