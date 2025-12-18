@@ -7,64 +7,110 @@
 @tailwind components;
 @tailwind utilities;
 
-/* BunkCredit Enterprise Design System - Dark Professional Theme */
+/* ========================================
+   BunkCredit Dual Design System
+   A. Staff Interface: Industrial High-Vis
+   B. Admin Interface: Clean SaaS Bento
+   ======================================== */
 
 @layer base {
+  /* ========================================
+     A. STAFF THEME - Industrial High-Vis
+     Target: Pump Attendants
+     Environment: Outdoor, bright sunlight
+     Palette: Safety Yellow, Jet Black, White
+     ======================================== */
   :root {
-    /* Enterprise dark theme - Navy/Charcoal base with Gold accents */
-    --background: 220 20% 10%;
-    --foreground: 210 20% 95%;
+    /* Staff theme is the default (mobile-first) */
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
 
-    --card: 220 18% 14%;
-    --card-foreground: 210 20% 95%;
+    --card: 0 0% 8%;
+    --card-foreground: 0 0% 100%;
 
-    --popover: 220 18% 14%;
-    --popover-foreground: 210 20% 95%;
+    --popover: 0 0% 8%;
+    --popover-foreground: 0 0% 100%;
 
-    /* Gold/Amber primary - Enterprise premium feel */
-    --primary: 43 96% 56%;
-    --primary-foreground: 220 20% 10%;
+    /* Safety Yellow - High visibility */
+    --primary: 48 100% 50%;
+    --primary-foreground: 0 0% 0%;
 
-    /* Dark slate for secondary */
-    --secondary: 220 15% 20%;
-    --secondary-foreground: 210 20% 90%;
+    /* Dark grey secondary */
+    --secondary: 0 0% 12%;
+    --secondary-foreground: 0 0% 100%;
 
-    --muted: 220 15% 18%;
-    --muted-foreground: 220 10% 55%;
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 60%;
 
-    /* Teal accent */
-    --accent: 174 60% 45%;
-    --accent-foreground: 220 20% 10%;
+    /* Safety Orange accent */
+    --accent: 25 100% 50%;
+    --accent-foreground: 0 0% 0%;
 
-    /* States */
-    --destructive: 0 72% 51%;
+    /* States - High contrast */
+    --destructive: 0 100% 50%;
     --destructive-foreground: 0 0% 100%;
 
-    --success: 152 69% 40%;
+    --success: 120 100% 35%;
+    --success-foreground: 0 0% 100%;
+
+    --warning: 48 100% 50%;
+    --warning-foreground: 0 0% 0%;
+
+    /* Borders - Bold and visible */
+    --border: 48 100% 50%;
+    --input: 0 0% 15%;
+    --ring: 48 100% 50%;
+
+    --radius: 0px;
+  }
+
+  /* ========================================
+     B. ADMIN THEME - Clean SaaS Bento
+     Target: Owner (Admin)
+     Environment: Indoor office, laptop/PC
+     Palette: White, Light Grey, Slate
+     ======================================== */
+  .admin-theme {
+    --background: 210 40% 98%;
+    --foreground: 222 47% 11%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    /* Professional Blue */
+    --primary: 217 91% 60%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Soft Grey */
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222 47% 25%;
+
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;
+
+    /* Teal accent */
+    --accent: 172 66% 50%;
+    --accent-foreground: 0 0% 100%;
+
+    /* States */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --success: 142 76% 36%;
     --success-foreground: 0 0% 100%;
 
     --warning: 38 92% 50%;
-    --warning-foreground: 220 20% 10%;
+    --warning-foreground: 0 0% 0%;
 
-    /* Borders - subtle gold tint */
-    --border: 43 30% 35%;
-    --input: 220 15% 25%;
-    --ring: 43 96% 56%;
+    /* Borders - Subtle */
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 217 91% 60%;
 
-    --radius: 0px;
-
-    /* Neubrutalism shadows with gold */
-    --shadow-offset: 4px;
-    --shadow-color: 43 60% 30%;
-  }
-
-  .dark {
-    /* Already dark, maintain consistency */
-    --background: 220 25% 8%;
-    --foreground: 210 20% 95%;
-
-    --card: 220 20% 12%;
-    --card-foreground: 210 20% 95%;
+    --radius: 16px;
   }
 }
 
@@ -83,8 +129,211 @@
   }
 }
 
+/* ========================================
+   STAFF COMPONENTS - Industrial Style
+   Massive buttons, thick borders, high contrast
+   ======================================== */
 @layer components {
-  /* Enterprise Neubrutalism card style */
+  /* Staff Industrial Card */
+  .staff-card {
+    @apply bg-card border-[3px] border-primary;
+    box-shadow: 4px 4px 0 hsl(var(--primary));
+  }
+
+  .staff-card-hover {
+    @apply staff-card transition-all duration-100 cursor-pointer;
+  }
+
+  .staff-card-hover:hover {
+    box-shadow: 6px 6px 0 hsl(var(--primary));
+    transform: translate(-2px, -2px);
+  }
+
+  .staff-card-hover:active {
+    box-shadow: 0px 0px 0 hsl(var(--primary));
+    transform: translate(4px, 4px);
+  }
+
+  /* Staff Massive Button */
+  .staff-button {
+    @apply inline-flex items-center justify-center gap-2 px-8 py-5 font-bold text-xl border-[3px] transition-all duration-100 uppercase tracking-wider;
+    box-shadow: 4px 4px 0 hsl(var(--foreground));
+  }
+
+  .staff-button:hover {
+    box-shadow: 6px 6px 0 hsl(var(--foreground));
+    transform: translate(-2px, -2px);
+  }
+
+  .staff-button:active {
+    box-shadow: 0px 0px 0 hsl(var(--foreground));
+    transform: translate(4px, 4px);
+  }
+
+  .staff-button-primary {
+    @apply staff-button bg-primary text-primary-foreground border-primary-foreground;
+  }
+
+  .staff-button-success {
+    @apply staff-button bg-success text-success-foreground border-success-foreground;
+  }
+
+  .staff-button-destructive {
+    @apply staff-button bg-destructive text-destructive-foreground border-destructive-foreground;
+  }
+
+  /* Staff Input */
+  .staff-input {
+    @apply w-full px-4 py-4 bg-input border-[3px] border-primary text-foreground placeholder:text-muted-foreground font-mono text-2xl uppercase tracking-wider transition-all;
+    box-shadow: 3px 3px 0 hsl(var(--primary));
+  }
+
+  .staff-input:focus {
+    @apply outline-none;
+    box-shadow: 5px 5px 0 hsl(var(--primary));
+    transform: translate(-2px, -2px);
+  }
+
+  /* Staff Select */
+  .staff-select {
+    @apply w-full px-4 py-4 bg-input border-[3px] border-primary text-foreground font-bold text-xl appearance-none cursor-pointer transition-all;
+    box-shadow: 3px 3px 0 hsl(var(--primary));
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23FFD700' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    background-size: 28px;
+  }
+
+  .staff-select:focus {
+    @apply outline-none;
+    box-shadow: 5px 5px 0 hsl(var(--primary));
+  }
+
+  /* Staff Badge */
+  .staff-badge {
+    @apply inline-flex items-center px-4 py-2 font-bold text-sm border-[3px] uppercase tracking-widest;
+    box-shadow: 2px 2px 0 hsl(var(--foreground));
+  }
+
+  .staff-badge-success {
+    @apply staff-badge bg-success text-success-foreground border-success-foreground;
+  }
+
+  .staff-badge-warning {
+    @apply staff-badge bg-warning text-warning-foreground border-warning-foreground;
+  }
+
+  .staff-badge-destructive {
+    @apply staff-badge bg-destructive text-destructive-foreground border-destructive-foreground;
+  }
+
+  /* ========================================
+     ADMIN COMPONENTS - Clean SaaS Style
+     Rounded corners, soft shadows, Bento grid
+     ======================================== */
+
+  /* Admin Bento Card */
+  .admin-card {
+    @apply bg-card rounded-2xl border border-border;
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  }
+
+  .admin-card-hover {
+    @apply admin-card transition-all duration-200 cursor-pointer;
+  }
+
+  .admin-card-hover:hover {
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    transform: translateY(-2px);
+  }
+
+  /* Admin Button */
+  .admin-button {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2 font-medium text-sm rounded-xl transition-all duration-200;
+  }
+
+  .admin-button-primary {
+    @apply admin-button bg-primary text-primary-foreground;
+    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  }
+
+  .admin-button-primary:hover {
+    @apply opacity-90;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+  }
+
+  .admin-button-secondary {
+    @apply admin-button bg-secondary text-secondary-foreground border border-border;
+  }
+
+  .admin-button-secondary:hover {
+    @apply bg-muted;
+  }
+
+  .admin-button-ghost {
+    @apply admin-button text-foreground;
+  }
+
+  .admin-button-ghost:hover {
+    @apply bg-secondary;
+  }
+
+  /* Admin Input */
+  .admin-input {
+    @apply w-full px-4 py-3 bg-background border border-border rounded-xl text-foreground placeholder:text-muted-foreground text-base transition-all;
+  }
+
+  .admin-input:focus {
+    @apply outline-none ring-2 ring-primary/20 border-primary;
+  }
+
+  /* Admin Select */
+  .admin-select {
+    @apply w-full px-4 py-3 bg-background border border-border rounded-xl text-foreground text-base appearance-none cursor-pointer transition-all;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%2364748B' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 18px;
+  }
+
+  .admin-select:focus {
+    @apply outline-none ring-2 ring-primary/20 border-primary;
+  }
+
+  /* Admin Badge */
+  .admin-badge {
+    @apply inline-flex items-center px-2.5 py-0.5 font-medium text-xs rounded-full;
+  }
+
+  .admin-badge-success {
+    @apply admin-badge bg-success/10 text-success;
+  }
+
+  .admin-badge-warning {
+    @apply admin-badge bg-warning/10 text-warning;
+  }
+
+  .admin-badge-destructive {
+    @apply admin-badge bg-destructive/10 text-destructive;
+  }
+
+  .admin-badge-primary {
+    @apply admin-badge bg-primary/10 text-primary;
+  }
+
+  /* Bento Grid Layout */
+  .bento-grid {
+    @apply grid gap-4;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+
+  .bento-span-2 {
+    @apply col-span-1 lg:col-span-2;
+  }
+
+  /* ========================================
+     LEGACY COMPONENTS - Keep for compatibility
+     ======================================== */
   .neo-card {
     @apply bg-card border-[3px] border-primary/40;
     box-shadow: 4px 4px 0 hsl(var(--primary) / 0.3);
@@ -105,7 +354,6 @@
     transform: translate(2px, 2px);
   }
 
-  /* Enterprise input fields */
   .neo-input {
     @apply w-full px-4 py-3 bg-input border-[3px] border-primary/40 text-foreground placeholder:text-muted-foreground font-medium text-lg transition-all;
     box-shadow: 3px 3px 0 hsl(var(--primary) / 0.2);
@@ -117,7 +365,6 @@
     transform: translate(-2px, -2px);
   }
 
-  /* Enterprise button base */
   .neo-button {
     @apply inline-flex items-center justify-center gap-2 px-6 py-3 font-bold text-lg border-[3px] transition-all duration-150;
     box-shadow: 4px 4px 0 hsl(var(--primary) / 0.3);
@@ -139,7 +386,6 @@
     transform: none;
   }
 
-  /* Button variants */
   .neo-button-primary {
     @apply neo-button bg-primary text-primary-foreground border-primary;
   }
@@ -170,7 +416,6 @@
     box-shadow: 4px 4px 0 hsl(var(--primary) / 0.3);
   }
 
-  /* Enterprise select */
   .neo-select {
     @apply w-full px-4 py-3 bg-input border-[3px] border-primary/40 text-foreground font-medium text-lg appearance-none cursor-pointer transition-all;
     box-shadow: 3px 3px 0 hsl(var(--primary) / 0.2);
@@ -185,7 +430,6 @@
     box-shadow: 5px 5px 0 hsl(var(--primary) / 0.3);
   }
 
-  /* Enterprise badge */
   .neo-badge {
     @apply inline-flex items-center px-3 py-1 font-bold text-xs border-[2px] uppercase tracking-wider;
     box-shadow: 2px 2px 0 hsl(var(--primary) / 0.2);
@@ -207,15 +451,7 @@
     @apply neo-badge bg-destructive text-destructive-foreground border-destructive;
   }
 
-  .neo-badge-admin {
-    @apply neo-badge bg-gradient-to-r from-primary to-amber-400 text-primary-foreground border-primary;
-  }
-
-  .neo-badge-staff {
-    @apply neo-badge bg-secondary text-secondary-foreground border-primary/40;
-  }
-
-  /* Success banner */
+  /* Success banner animation */
   @keyframes success-flash {
     0%, 100% {
       opacity: 1;
@@ -260,26 +496,25 @@
     animation: pulse-glow 1.5s ease-in-out infinite;
   }
 
-  /* Gold gradient text */
   .text-gold-gradient {
     @apply bg-gradient-to-r from-primary via-amber-400 to-primary bg-clip-text text-transparent;
   }
 
-  /* Enterprise table styles */
-  .neo-table {
+  /* Admin table styles */
+  .admin-table {
     @apply w-full border-collapse;
   }
 
-  .neo-table th {
-    @apply px-4 py-3 text-left font-bold uppercase tracking-wider text-sm bg-secondary border-b-[3px] border-primary/40;
+  .admin-table th {
+    @apply px-4 py-3 text-left font-semibold text-xs uppercase tracking-wider text-muted-foreground bg-muted/50 border-b border-border;
   }
 
-  .neo-table td {
-    @apply px-4 py-3 border-b border-primary/20;
+  .admin-table td {
+    @apply px-4 py-3 border-b border-border;
   }
 
-  .neo-table tr:hover td {
-    @apply bg-secondary/50;
+  .admin-table tr:hover td {
+    @apply bg-muted/30;
   }
 }
 
